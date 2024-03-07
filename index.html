@@ -1,56 +1,69 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tarjeta de Presentación</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background-color: #f0f0f0;
-    }
+  <title>Presentation Card</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <link rel="shortcut icon" href="img/icon.png" type="image/png" />
 
-    .card {
-      width: 300px;
-      padding: 20px;
-      background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    .card img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin-bottom: 20px;
-    }
-
-    .card h1 {
-      margin-bottom: 10px;
-      font-size: 1.5em;
-    }
-
-    .card p {
-      color: #555;
-      font-size: 1.1em;
-    }
-  </style>
 </head>
-<body>
-  <div class="card">
-    <img src="tu_foto.jpg" alt="Tu foto">
-    <h1>Nombre</h1>
-    <p>Puesto</p>
-    <p>Correo electrónico</p>
-    <p>Teléfono</p>
-  </div>
-</body>
-</html>
 
+<body>
+
+<img src="img/logo.png" alt="Profile Picture" class="logo">
+  <div class="contianer">
+    <div class="card">
+      <div class="card-container">
+        <div class="card-front">
+          <div class="content-container">
+            <div class="card-image" style="background-image: url('img/funcionarios/apfc.png');"></div>
+            <p class="pAnalista">A<br>N<br>A<br>L<br>I<br>S<br>T<br>A<br><br>N<br>I<br>V<br>E<br>L<br><br> II</p>
+          </div>
+          <div class="card-textWrapper">
+            <h2 class="card-subHeading">Ing. Adriana del Pilar Forero Ceballos </h2>
+            <h3 class="card-heading">Ocupa el cargo de Analista Nivel II en Informática y Tecnología, desempeñando funciones avanzadas en el desarrollo y mantenimiento de soluciones informáticas.</h3>
+            <a href="#" class="card-trigger link--styled">Ver más</a>
+          </div>
+        </div>
+        <div class="card-back">
+          <h2 style="text-align: center; margin-top: -20px;">Datos Personales</h2>
+
+          <div class="card-close"></div>
+          <table width="100%">
+            <tr>
+                <td>
+                    <h4><b>Email:</b></h4>
+                    <p><a href="mailto:adriana.forero@4-72.com.co">adriana.forero@4-72.com.co</a></p>
+                    
+                    <h4><b>Mobile phone:</b></h4>
+                    <p><a href="https://api.whatsapp.com/send?phone=3105618204"><i class="fab fa-whatsapp"></i>&nbsp;(+57)310 5618204</a></p>
+                    
+                    <h4><b>Landline:</b></h4>
+                    <p>601 4722005 Ext. 1052</p>
+                </td>
+                
+                <td>
+                    <h4><b>Website:</b></h4>
+                    <p><a href="https://www.4-72.com.co">www.4-72.com.co</a></p>
+                    
+                    <h4><b>Address:</b></h4>
+                    <p>Diagonal 25G N 95A - 55. Bogotá, Colombia</p>
+                    
+                    <h4><b>Postal Code:</b></h4>
+                    <p>110911</p>
+                </td>
+            </tr>
+        </table>
+                
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
