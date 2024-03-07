@@ -1,0 +1,466 @@
+/* Resetting default margin and padding */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+/* estilos alternos tarjeta */
+
+.logo {
+  width: 20%;
+  margin-top: -10px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+body {
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+  color: #313131;
+  padding: 5%;
+  background-color: #0035A0;
+}
+
+.link--styled {
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  border-bottom-color: transparent;
+}
+
+.link--styled:focus,
+.link--styled:hover {
+  color: #003168;
+  border-color: #003168;
+}
+
+.link--styled::after {
+  content: "";
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNyA2LjYiPg0KICA8cGF0aCBmaWxsPSIjMDA1MUE1IiBkPSJNMCwyLjVoMTQuM2wwLjgsMC44TDE0LjMsNEgwVjIuNXogTTE1LjEsMy4zTDE0LjMsNGwtMS41LDEuNWwwLDAuOWMwLDAsMCwwLjEsMC4xLDAuMWwwLjksMGwyLjMtMi4zbDAsMCAgTDE3LDMuM2MwLDAsMCwwLDAsMGMwLDAsMC0wLjEsMC0wLjFsLTAuOS0wLjljMCwwLDAsMCwwLDBMMTMuNywwbC0wLjksMGMwLDAtMC4xLDAtMC4xLDAuMWwwLDAuOWwxLjUsMS41TDE1LjEsMy4zeiIvPg0K");
+  margin-left: 4px;
+  width: 17px;
+  height: 7px;
+}
+
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 0 20px;
+  border-bottom: 1px solid transparent;
+  border-radius: 25% 10%;
+}
+
+.card {
+  perspective: 1000px;
+  width: 500px;
+  height: 480px;
+  margin: -60px auto;
+}
+
+.card-container {
+  position: relative;
+  max-width: 500px;
+  height: 440px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px 0 #C4C4C4;
+  border-radius: 25% 23%;
+}
+
+.card--flipped .card-container {
+  transform: rotateY(-180deg);
+}
+
+.card-front,
+.card-back {
+  backface-visibility: hidden;
+  position: absolute;
+  background-color: #FDC52F;
+  border-radius: 25% 10%;
+}
+
+.card-front {
+  z-index: 2;
+}
+
+.content-container {
+  display: flex;
+  align-items: center;
+  /* Centra verticalmente los elementos en el contenedor */
+}
+
+.card-image {
+  width: 400px;
+  height: 330px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 25% 10%;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.pAnalista {
+  text-align: center;
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 18px;
+  color: #7e4400;
+
+}
+
+.card-textWrapper {
+  min-height: 180px;
+  padding: 20px;
+  transition: all 0.2s ease-in-out;
+
+  .card--flipped & {
+    min-height: 140px;
+  }
+}
+
+.card-subHeading {
+  color: #000;
+  font-weight: bold;
+  font-weight: 800;
+  justify-content: center;
+}
+
+.card-heading {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+  color: #1A1A1A;
+  justify-content: center;
+
+}
+
+.card-trigger {
+  position: absolute;
+  bottom: 20px;
+  right: 50px;
+  color: #0051A5;
+  font-size: 15px;
+  font-weight: bold;
+  transition: 1s;
+
+  .card--flipped & {
+    transition: all 0.2s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+
+.card-trigger:hover {
+  color: black;
+  font-weight: bold;
+  transform: translateX(5px);
+  text-decoration: underline;
+}
+
+.card-back {
+  transform: rotateY(-180deg);
+  height: 300px;
+  padding: 100px 50px 20px;
+  border-radius: 25% 10%;
+  scrollbar-width: none;
+}
+
+.card-close {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transition: all 0.2s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+  transition: 0.9s;
+
+  .card--flipped & {
+    visibility: visible;
+    opacity: 1;
+    z-index: 5;
+    top: 20px;
+  }
+
+  &::before,
+  &::after {
+    transition: all 0.2s ease-in-out;
+    position: absolute;
+    content: '';
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+  }
+
+  &::before {
+    top: calc(50% - 1.5px);
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    bottom: calc(50% - 1.5px);
+    transform: rotate(-45deg);
+  }
+}
+
+.card-close:hover {
+  transform: rotate(360deg);
+}
+
+td, h4{
+  color: wheat;
+}
+
+td, p , a{
+  color: black;
+}
+
+
+/*RESPONSIVE -------  RESPONSIVE --------  RESPONSIVE ---------------*/
+
+/* Media queries para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  .logo,
+  .container,
+  .card,
+  .card-container,
+  .card-front,
+  .card-back {
+    border-radius: 0; /* Elimina la border-radius en dispositivos móviles */
+  }
+  
+.card-subHeading{
+  text-align: center;
+}
+.card-heading{
+  font-size: 16px;
+  text-align: center;
+}
+
+.logo{
+  margin-top: -20px;
+  width: 100%;
+  height: 100%;
+}
+.card{
+  margin-top: 20px;
+  width: auto;
+}
+
+  .content-container {
+    align-items: flex-start; /* Ajusta la alineación a la izquierda en dispositivos móviles */
+  border-radius: 25% 10%;
+
+  }
+
+  .card-textWrapper {
+    padding: 20px 0; /* Ajusta el relleno superior e inferior en dispositivos móviles */
+  }
+
+  .card-image {
+    margin-bottom: 0; /* Elimina el margen inferior en dispositivos móviles */
+    width: 250px;
+    border-radius: 25% 10%;
+
+  }
+
+  .card-trigger {
+    position: absolute;
+    bottom: 5px;
+    right: 115px;
+    color: #0051A5;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 1s;
+  
+    .card--flipped & {
+      transition: all 0.2s ease-in-out;
+      visibility: hidden;
+      opacity: 0;
+      z-index: -1;
+    }
+  }  
+  .card-trigger:hover {
+    color: black;
+    font-weight: bold;
+    transform: translateX(5px);
+    text-decoration: underline;
+  }
+
+  .card-front,
+  .card-back {
+    backface-visibility: hidden;
+    position: absolute;
+    background-color: #FDC52F;
+    border-radius: 25% 10%;
+  }
+
+  .card-back {
+    margin-top: 40px;
+    transform: rotateY(-180deg);
+    height: 300px;
+    padding: 90px 20px 90px;
+    border-radius: 25% 10%;
+    scrollbar-width: none;
+  }
+  
+  .card-front {
+    z-index: 2;
+  }
+  .card-container {
+    position: relative;
+    max-width: 500px;
+    height: 440px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px 0 #C4C4C4;
+    border-radius: 25% 23%;
+  }
+
+
+
+td, h4{
+  bottom: 20px;
+  color: wheat;
+}
+
+td, p , a{
+  color: black;
+}
+
+}
+
+
+
+
+/* Media queries para TABLETS */
+@media only screen and (max-width: 1200px) {
+  .logo,
+  .container,
+  .card,
+  .card-container,
+  .card-front,
+  .card-back {
+    border-radius: 0; /* Elimina la border-radius en dispositivos móviles */
+  }
+
+body{
+  overflow-y: scroll;
+}
+  
+.card-subHeading{
+  text-align: center;
+}
+.card-heading{
+  font-size: 16px;
+  text-align: center;
+}
+
+.logo{
+  margin-top: -20px;
+  width: 100%;
+  height: 100%;
+}
+.card{
+  margin-top: 20px;
+  width: auto;
+}
+
+  .content-container {
+    align-items: flex-start; /* Ajusta la alineación a la izquierda en dispositivos móviles */
+  border-radius: 25% 10%;
+
+  }
+
+  .card-textWrapper {
+    padding: 20px 0; /* Ajusta el relleno superior e inferior en dispositivos móviles */
+  }
+
+  .card-image {
+    margin-bottom: 0; /* Elimina el margen inferior en dispositivos móviles */
+    width: 250px;
+    border-radius: 25% 10%;
+
+  }
+
+  .card-trigger {
+    position: absolute;
+    bottom: 5px;
+    right: 115px;
+    color: #0051A5;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 1s;
+  
+    .card--flipped & {
+      transition: all 0.2s ease-in-out;
+      visibility: hidden;
+      opacity: 0;
+      z-index: -1;
+    }
+  }  
+  .card-trigger:hover {
+    color: black;
+    font-weight: bold;
+    transform: translateX(5px);
+    text-decoration: underline;
+  }
+
+  .card-front,
+  .card-back {
+    backface-visibility: hidden;
+    position: absolute;
+    background-color: #FDC52F;
+    border-radius: 25% 10%;
+  }
+
+  .card-back {
+    margin-top: 40px;
+    transform: rotateY(-180deg);
+    height: 300px;
+    padding: 90px 20px 90px;
+    border-radius: 25% 10%;
+    scrollbar-width: none;
+  }
+  
+  .card-front {
+    z-index: 2;
+  }
+  .card-container {
+    position: relative;
+    max-width: 500px;
+    height: 440px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px 0 #C4C4C4;
+    border-radius: 25% 23%;
+  }
+
+
+
+td, h4{
+  bottom: 20px;
+  color: wheat;
+}
+
+td, p , a{
+  color: black;
+}
+
+}
