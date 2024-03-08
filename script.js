@@ -83,9 +83,9 @@ $(".qrc_addtocontact").on("click", function(e){
                     "VERSION:3.0\n" +
                     "FN:Adriana del Pilar Mora\n" +
                     "ORG:Servicios Postales Nacionales\n" +
-                    "TEL:3214483011\n" +
+                    "TEL:3105618204\n" +
                     "EMAIL:adriana.mora@4-72.com.co\n" +
-                    "ADR:Dg 25G - 95A-55\n" +
+                    "ADR:SERVICIOS POSTALES NACIONALES - Dg 25G - 95A-55\n" +
                     "END:VCARD";
 
     // Crea una URL de datos para abrir la interfaz de guardar contacto
