@@ -81,8 +81,8 @@ $(".qrc_addtocontact").on("click", function(e){
     // Crea los datos de contacto en formato vCard (VCF)
     var vCardData = "BEGIN:VCARD\n" +
                     "VERSION:3.0\n" +
-                    "FN:Adriana del Pilar Mora\n" +
-                    "ORG:Servicios Postales Nacionales\n" +
+                    "FN:SERVICIOS POSTALES NACIONALES S.A.S\n" +
+                    "ORG:Adriana del Pilar Forero Ceballos\n" +
                     "TEL:3105618204\n" +
                     "EMAIL:adriana.mora@4-72.com.co\n" +
                     "ADR:SERVICIOS POSTALES NACIONALES - Dg 25G - 95A-55\n" +
