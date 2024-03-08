@@ -28,4 +28,39 @@ function flipCard(card) {
     const card = $(this).closest('.card');
     flipCard(card);
   });
+
   
+
+//   ANIMACION BOTON VER MAS
+// document.getElementById('verMasBtn').addEventListener('click', function () {
+//     document.querySelector('.table-container').classList.toggle('expanded');
+//   });
+  
+
+
+document.getElementById('verMasBtn').addEventListener('click', function () {
+    const elements = document.querySelectorAll('.element-container');
+    elements.forEach(element => element.classList.toggle('expanded'));
+  });
+
+  
+
+// script para desenfocar al poner cursor en datos personales
+
+ // Agrega y quita la clase desenfocado en hover
+ document.querySelectorAll('p').forEach(element => {
+    element.addEventListener('mouseover', () => {
+      document.querySelectorAll('p').forEach(otherElement => {
+        otherElement.classList.remove('enfocado');
+        otherElement.classList.add('desenfocado');
+      });
+      element.classList.add('enfocado');
+      element.classList.remove('desenfocado');
+    });
+
+    element.addEventListener('mouseout', () => {
+      document.querySelectorAll('p').forEach(otherElement => {
+        otherElement.classList.remove('enfocado', 'desenfocado');
+      });
+    });
+  });
