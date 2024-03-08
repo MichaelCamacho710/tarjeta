@@ -64,3 +64,33 @@ document.getElementById('verMasBtn').addEventListener('click', function () {
       });
     });
   });
+
+
+
+
+
+//   FUNCION AGREGAR CONTACTO
+$(".qrc_addtocontact").on("click", function(e){
+    e.preventDefault();
+    
+    // Verifica si la página está siendo cargada dentro de un iframe
+    if (window.self !== window.top) {
+        return;
+    }
+
+    // Crea los datos de contacto en formato vCard (VCF)
+    var vCardData = "BEGIN:VCARD\n" +
+                    "VERSION:3.0\n" +
+                    "FN:Adriana del Pilar Mora\n" +
+                    "ORG:Servicios Postales Nacionales\n" +
+                    "TEL:3214483011\n" +
+                    "EMAIL:adriana.mora@4-72.com.co\n" +
+                    "ADR:Dg 25G - 95A-55\n" +
+                    "END:VCARD";
+
+    // Crea una URL de datos para abrir la interfaz de guardar contacto
+    var dataUrl = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
+
+    // Navega a la URL de datos para abrir la interfaz de guardar contacto
+    location.href = dataUrl;
+});
