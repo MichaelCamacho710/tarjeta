@@ -125,32 +125,56 @@ $("#modalButton").on("click", function() {
 });*/
 
 
+$(".qrc_addtocontact").on("click", function(e){
+  e.preventDefault();
 
-javascript
-async function addContact() {
-  // Verifica si la API de contactos web es compatible con el navegador web
-  if (!('contacts' in navigator)) {
-    alert("La API de contactos web no es compatible con este navegador web.");
-    return;
+  // Verifica si la página está siendo cargada dentro de un iframe
+  if (window.self !== window.top) {
+      return;
   }
 
-  // Solicita al usuario el permiso para acceder a los contactos
-  const permission = await navigator.permissions.request({ name: 'contacts' });
+  // Crea los datos de contacto en formato vCard (VCF)
+  var vCardData = "BEGIN:VCARD\n" +
+                  "VERSION:3.0\n" +
+                  "FN:Adriana del Pilar\n" +  // Nombre
+                  "N:Forero Ceballos;Adriana del Pilar;;;\n" +  // Apellidos;Nombre
+                  "ORG:SERVICIOS POSTALES NACIONALES\n" +  // Empresa
+                  "TEL:3105618204\n" +
+                  "EMAIL:adriana.mora@4-72.com.co\n" +
+                  "ADR: Dg 25G - 95A-55\n" +
+                  "PHOTO;TYPE=JPEG:https://i.postimg.cc/fRGhb5tY/apfc.png\n" +  // Agrega la URL de la imagen
+                  "END:VCARD";
 
-  // Verifica si el usuario otorgó el permiso para acceder a los contactos
-  if (permission.state !== 'granted') {
-    alert("No se otorgó el permiso para acceder a los contactos.");
-    return;
-  }
+  // Crea una URL de datos para abrir la interfaz de guardar contacto
+  var dataUrl = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
 
-  // Crea un nuevo objeto Contact con los datos del contacto
-  const contact = new Contact({
-    name: "Adriana del Pilar Forero Ceballos",
-    honorificPrefix: "Sr.",
-    emails: [{value: "adriana.mora@4-72.com.co"}],
-    addresses: [{streetAddress: "Dg 25G - 95A-55"}]
-  });
+  // Crea un enlace para descargar el archivo de contacto
+  var downloadLink = document.createElement("a");
+  downloadLink.href = dataUrl;
+  downloadLink.download = "contacto.vcf"; // Nombre del archivo de contacto
+  downloadLink.textContent = ("a");
+  downloadLink.href = dataUrl;
+  downloadLink.download = "contacto.vcf"; // Nombre del archivo de contacto
+  downloadLink.textContent = "Haz clic aquí para descargar el archivo de contacto";
 
-  // Agrega el contacto al almacén de contactos del usuario
-  await navigator.contacts.add(contact);
-}
+  // AgcreateElement("a");
+  downloadLink.href = dataUrl;
+  downloadLink.download = "contacto.vcf"; // Nombre del archivo de contacto
+  downloadLink.textContent = "Haz clic aquí para descargar el archivo de contacto";
+
+  // Agrega el enlace al documento
+  document.body.appendChild(downloadLink);
+  document.body.appendChild(downloadLink);
+
+  // Simula
+
+  // Agrega el enlace al documento
+  document.body.appendChild(downloadLink);
+
+  // Simula
+  // Simula un clic en el enlace para descargar el archivo de contacto
+  downloadLink.click();
+
+  // Elimina el enlace del documento
+  document.body.removeChild(downloadLink);
+});
