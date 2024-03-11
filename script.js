@@ -81,7 +81,7 @@ $(".qrc_addtocontact").on("click", function(e){
 
   // Verifica si la página está siendo cargada dentro de un iframe
   if (window.self !== window.top) {
-      return;
+    return;
   }
 
   // Crea los datos de contacto en formato vCard (VCF)
@@ -99,32 +99,20 @@ $(".qrc_addtocontact").on("click", function(e){
   // Crea una URL de datos para abrir la interfaz de guardar contacto
   var dataUrl = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
 
- // Crea un enlace para descargar el archivo de contacto
- var downloadLink = document.createElement("a");
- downloadLink.href = dataUrl;
- downloadLink.download = "contacto.vcf"; // Nombre del archivo de contacto
- downloadLink.textContent = "Haz clic aquí para descargar el archivo de contacto";
+  // Crea un enlace para descargar el archivo de contacto
+  var downloadLink = document.createElement("a");
+  downloadLink.href = dataUrl;
+  downloadLink.download = "contacto.vcf"; // Nombre del archivo de contacto
+  downloadLink.textContent = "Haz clic aquí para descargar el archivo de contacto";
 
- // Verifica si el usuario está en un dispositivo Android
- var isAndroid = /Android/i.test(navigator.userAgent);
+  // Agrega el enlace al cuerpo del documento
+  document.body.appendChild(downloadLink);
 
- // Acciones diferentes según el dispositivo
- if (isAndroid) {
-   // Crea un enlace para abrir la aplicación de contactos en Android
-   var contactLink = document.createElement("a");
-   contactLink.href = "content://com.android.contacts/data";
-   contactLink.textContent = "Agregar contacto";
+  // Simula un clic en el enlace para descargar el archivo de contacto
+  downloadLink.click();
 
-   // Abre la aplicación de contactos en Android
-   window.open(contactLink.href, "_system");
- } else {
-   // Agrega el enlace al cuerpo del documento
-   document.body.appendChild(downloadLink);
-
-   // Simula un clic en el enlace para descargar el archivo de contacto
-   downloadLink.click();
-
-   // Elimina el enlace del cuerpo del documento
-   document.body.removeChild(downloadLink);
- }
+  // Elimina el enlace del cuerpo del documento después de un breve período
+  setTimeout(function() {
+    document.body.removeChild(downloadLink);
+  }, 1000); // 1000 milisegundos (1 segundo)
 });
