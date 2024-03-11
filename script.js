@@ -66,6 +66,13 @@ document.getElementById('verMasBtn').addEventListener('click', function () {
   });
 
 
+// Muestra el modal
+
+ /* $("#modalContainer").show();
+// Cierra el modal al hacer clic en el botón "Cerrar"
+$("#modalButton").on("click", function() {
+  $("#modalContainer").hide();
+});*/
 
 
 //   FUNCION AGREGAR CONTACTO
@@ -76,20 +83,6 @@ $(".qrc_addtocontact").on("click", function(e){
   if (window.self !== window.top) {
       return;
   }
-
-
-
-  // Muestra el modal
-
- /* $("#modalContainer").show();
-// Cierra el modal al hacer clic en el botón "Cerrar"
-$("#modalButton").on("click", function() {
-  $("#modalContainer").hide();
-});*/
-
-
-  // URL de la imagen  https://i.ibb.co/s9RTXqW/apfc.png
- var imageUrl = "https://i.postimg.cc/fRGhb5tY/apfc.png"; // Reemplaza con la URL real de la imagen
 
   // Crea los datos de contacto en formato vCard (VCF)
   var vCardData = "BEGIN:VCARD\n" +
@@ -106,20 +99,32 @@ $("#modalButton").on("click", function() {
   // Crea una URL de datos para abrir la interfaz de guardar contacto
   var dataUrl = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
 
-  // Crea un enlace para descargar el archivo de contacto
-  var downloadLink = document.createElement("a");
-  downloadLink.href = dataUrl;
-  downloadLink.download = "contacto.vcf"; // Nombre del archivo de contacto
-  downloadLink.textContent = "Haz clic aquí para descargar el archivo de contacto";
+ // Crea un enlace para descargar el archivo de contacto
+ var downloadLink = document.createElement("a");
+ downloadLink.href = dataUrl;
+ downloadLink.download = "contacto.vcf"; // Nombre del archivo de contacto
+ downloadLink.textContent = "Haz clic aquí para descargar el archivo de contacto";
 
-  // Navega a la URL de datos para abrir la interfaz de guardar contacto
-  location.href = dataUrl;
+ // Verifica si el usuario está en un dispositivo Android
+ var isAndroid = /Android/i.test(navigator.userAgent);
 
-  // Crea un enlace para abrir la aplicación de contactos en Android
-  var contactLink = document.createElement("a");
-  contactLink.href = "content://com.android.contacts/data";
-  contactLink.textContent = "Agregar contacto";
+ // Acciones diferentes según el dispositivo
+ if (isAndroid) {
+   // Crea un enlace para abrir la aplicación de contactos en Android
+   var contactLink = document.createElement("a");
+   contactLink.href = "content://com.android.contacts/data";
+   contactLink.textContent = "Agregar contacto";
 
-  // Abre la aplicación de contactos en Android
-  window.open(contactLink.href, "_system");
+   // Abre la aplicación de contactos en Android
+   window.open(contactLink.href, "_system");
+ } else {
+   // Agrega el enlace al cuerpo del documento
+   document.body.appendChild(downloadLink);
+
+   // Simula un clic en el enlace para descargar el archivo de contacto
+   downloadLink.click();
+
+   // Elimina el enlace del cuerpo del documento
+   document.body.removeChild(downloadLink);
+ }
 });
