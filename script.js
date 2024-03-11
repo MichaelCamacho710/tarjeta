@@ -79,11 +79,11 @@ $(".qrc_addtocontact").on("click", function(e){
 
   // Muestra el modal
   $("#modalContainer").show();
-});
-
 // Cierra el modal al hacer clic en el botón "Cerrar"
 $("#modalButton").on("click", function() {
   $("#modalContainer").hide();
+});
+
 
   // URL de la imagen  https://i.ibb.co/s9RTXqW/apfc.png
   var imageUrl = "https://i.postimg.cc/fRGhb5tY/apfc.png"; // Reemplaza con la URL real de la imagen
@@ -103,16 +103,6 @@ $("#modalButton").on("click", function() {
   // Crea una URL de datos para abrir la interfaz de guardar contacto
   var dataUrl = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
 
-  // Muestra un mensaje en el DOM antes de la descarga
-  var messageContainer = document.createElement("div");
-  messageContainer.textContent = "Guarda tu contacto en el dispositivo o en tu cuenta de preferencia. Luego, búscalo en tus contactos.";
-  messageContainer.style.padding = "10px";
-  messageContainer.style.backgroundColor = "#f2f2f2";
-  messageContainer.style.border = "1px solid #ccc";
-  messageContainer.style.borderRadius = "5px";
-  messageContainer.style.marginBottom = "10px";
-
-  document.body.appendChild(messageContainer);
 
   // Navega a la URL de datos para abrir la interfaz de guardar contacto
   location.href = dataUrl;
