@@ -95,8 +95,13 @@ $(".qrc_addtocontact").on("click", function(e){
   // Crea una URL de datos para abrir la interfaz de guardar contacto
   var dataUrl = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
 
-  // Navega a la URL de datos para abrir la interfaz de guardar contacto
-  location.href = dataUrl;
+  // Crea un elemento <a> y simula un clic para abrir la interfaz de guardar contacto
+  var downloadLink = document.createElement("a");
+  downloadLink.href = dataUrl;
+  downloadLink.download = "contacto.vcf"; // Nombre del archivo de contacto
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  document.body.removeChild(downloadLink);
 });
 
 
