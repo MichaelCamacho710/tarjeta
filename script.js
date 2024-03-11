@@ -79,7 +79,7 @@ $(".qrc_addtocontact").on("click", function(e){
     }
 
     // URL de la imagen
-    var imageUrl = "https://imgur.com/a/by475V4"; // Reemplaza con la URL real de la imagen
+    var imageUrl =  href="https://www.flaticon.es/iconos-gratis/cientifico-de-datos"; // Reemplaza con la URL real de la imagen
 
     // Crea los datos de contacto en formato vCard (VCF)
     var vCardData = "BEGIN:VCARD\n" +
