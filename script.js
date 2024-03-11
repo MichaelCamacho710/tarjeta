@@ -95,8 +95,12 @@ $(".qrc_addtocontact").on("click", function(e){
   // Crea una URL de datos para abrir la interfaz de guardar contacto
   var dataUrl = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
 
- // Muestra un mensaje antes de la descarga
- alert("Guarda tu contacto en el dispositivo o en tu cuenta de preferencia. Luego, búscalo en tus contactos.");
+// Crea un elemento div con un mensaje
+var messageDiv = document.createElement("div");
+messageDiv.innerHTML = "<p>Guarda tu contacto en el dispositivo o en tu cuenta de preferencia. Luego, búscalo en tus contactos.</p>";
+
+// Agrega el mensaje al cuerpo del documento
+document.body.appendChild(messageDiv);
 
   // Navega a la URL de datos para abrir la interfaz de guardar contacto
   location.href = dataUrl;
