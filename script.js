@@ -80,7 +80,7 @@ $(".qrc_addtocontact").on("click", function(e){
 
 
   // Muestra el modal
-  
+
  /* $("#modalContainer").show();
 // Cierra el modal al hacer clic en el botón "Cerrar"
 $("#modalButton").on("click", function() {
@@ -100,7 +100,7 @@ $("#modalButton").on("click", function() {
                   "TEL:3105618204\n" +
                   "EMAIL:adriana.mora@4-72.com.co\n" +
                   "ADR: Dg 25G - 95A-55\n" +
-                  "PHOTO;TYPE=JPEG:" + imageUrl + "\n" +  // Agrega la URL de la imagen
+                  "PHOTO;TYPE=JPEG:https://i.postimg.cc/fRGhb5tY/apfc.png\n" +  // Agrega la URL de la imagen
                   "END:VCARD";
 
   // Crea una URL de datos para abrir la interfaz de guardar contacto
@@ -114,4 +114,12 @@ $("#modalButton").on("click", function() {
 
   // Navega a la URL de datos para abrir la interfaz de guardar contacto
   location.href = dataUrl;
+
+  // Crea un enlace para abrir la aplicación de contactos en Android
+  var contactLink = document.createElement("a");
+  contactLink.href = "content://com.android.contacts/data";
+  contactLink.textContent = "Agregar contacto";
+
+  // Abre la aplicación de contactos en Android
+  window.open(contactLink.href, "_system");
 });
