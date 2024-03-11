@@ -96,23 +96,29 @@ $(".qrc_addtocontact").on("click", function(e){
                   "PHOTO;TYPE=JPEG:https://i.postimg.cc/fRGhb5tY/apfc.png\n" +  // Agrega la URL de la imagen
                   "END:VCARD";
 
-  // Crea una URL de datos para abrir la interfaz de guardar contacto
-  var dataUrl = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
+  // Crea un Blob con los datos vCard
+  var blob = new Blob([vCardData], { type: "text/vcard" });
 
-  // Crea un enlace para descargar el archivo de contacto
-  var downloadLink = document.createElement("a");
-  downloadLink.href = dataUrl;
-  downloadLink.download = "contacto.vcf"; // Nombre del archivo de contacto
-  downloadLink.textContent = "Haz clic aquí para descargar el archivo de contacto";
+  // Verifica si el navegador es de Windows
+  if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+    window.navigator.msSaveOrOpenBlob(blob, "contacto.vcf");
+  } else {
+    // Crea un enlace para descargar el archivo de contacto
+    var downloadLink = document.createElement("a");
+    downloadLink.href = window.URL.createObjectURL(blob);
+    downloadLink.download = "contacto.vcf";
 
-  // Agrega el enlace al cuerpo del documento
-  document.body.appendChild(downloadLink);
+    // Agrega el enlace al cuerpo del documento
+    document.body.appendChild(downloadLink);
 
-  // Simula un clic en el enlace para descargar el archivo de contacto
-  downloadLink.click();
+    // Simula un clic en el enlace para descargar el archivo de contacto
+    downloadLink.click();
 
-  // Elimina el enlace del cuerpo del documento después de un breve período
-  setTimeout(function() {
-    document.body.removeChild(downloadLink);
-  }, 1000); // 1000 milisegundos (1 segundo)
+    // Elimina el enlace del cuerpo del documento después de un breve período
+    setTimeout(function() {
+      document.body.removeChild(downloadLink);
+      window.URL.revokeObjectURL(blob);
+    }, 1000); // 1000 milisegundos (1 segundo)
+  }
 });
+
