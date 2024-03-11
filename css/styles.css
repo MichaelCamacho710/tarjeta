@@ -271,6 +271,7 @@ a {
   text-decoration: none;
   background-color: #FDC52F;
   border: none;
+  margin-left: 200px;
 }
 
 
@@ -366,7 +367,7 @@ a {
 
   .card {
     margin-top: 20px;
-    width: auto;
+    width: 100%;
   }
 
   .card-front {
@@ -379,10 +380,6 @@ a {
     border-radius: 25% 10%;
   }
 
-  .card-textWrapper {
-    padding: 20px 0;
-    /* Ajusta el relleno superior e inferior en dispositivos móviles */
-  }
 
   .card-image {
     margin-bottom: 0;
@@ -491,6 +488,13 @@ a {
     align-items: center;
     display: flex;
     justify-content: center;
+  }
+
+  #verMasBtn {
+    text-decoration: none;
+    background-color: #FDC52F;
+    border: none;
+    margin-left: 200px;
   }
 
 }
@@ -658,6 +662,13 @@ a {
     align-items: center;
     display: flex;
     justify-content: center;
+  }
+
+  #verMasBtn {
+    text-decoration: none;
+    background-color: #FDC52F;
+    border: none;
+    margin-left: 200px;
   }
 
 }

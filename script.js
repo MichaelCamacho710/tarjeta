@@ -77,8 +77,8 @@ $(".qrc_addtocontact").on("click", function(e){
       return;
   }
 
-  // URL de la imagen
-  var imageUrl = "https://cdn-icons-png.flaticon.com/128/4241/4241472.png"; // Reemplaza con la URL real de la imagen
+  // URL de la imagen  https://i.postimg.cc/fRGhb5tY/apfc.png
+  var imageUrl = "https://i.ibb.co/s9RTXqW/apfc.png"; // Reemplaza con la URL real de la imagen
 
   // Crea los datos de contacto en formato vCard (VCF)
   var vCardData = "BEGIN:VCARD\n" +
@@ -98,3 +98,5 @@ $(".qrc_addtocontact").on("click", function(e){
   // Navega a la URL de datos para abrir la interfaz de guardar contacto
   location.href = dataUrl;
 });
+
+
