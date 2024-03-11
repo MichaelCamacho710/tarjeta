@@ -76,6 +76,20 @@ $("#modalButton").on("click", function() {
 
 
 //   FUNCION AGREGAR CONTACTO
+function addContact(contact) {
+  if ('contacts' in navigator) {
+    navigator.contacts.save(contact)
+      .then(result => {
+        console.log('Contacto guardado:', result);
+      })
+      .catch(error => {
+        console.error('Error al guardar el contacto:', error);
+      });
+  } else {
+    console.warn('La API de Contactos no está disponible en este navegador.');
+  }
+}
+
 $(".qrc_addtocontact").on("click", function(e){
   e.preventDefault();
 
@@ -99,26 +113,35 @@ $(".qrc_addtocontact").on("click", function(e){
   // Crea un Blob con los datos vCard
   var blob = new Blob([vCardData], { type: "text/vcard" });
 
-  // Verifica si el navegador es de Windows
-  if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-    window.navigator.msSaveOrOpenBlob(blob, "contacto.vcf");
-  } else {
-    // Crea un enlace para descargar el archivo de contacto
-    var downloadLink = document.createElement("a");
-    downloadLink.href = window.URL.createObjectURL(blob);
-    downloadLink.download = "contacto.vcf";
+  // Crea un objeto FileReader para leer el archivo de contacto
+  var reader = new FileReader();
+  reader.onload = function(event) {
+    // Crea un objeto ContactAddress con la dirección del contacto
+    var address = new ContactAddress({
+      streetAddress: 'Dg 25G - 95A-55',
+      postalCode: '',
+      city: '',
+      country: '',
+      formatted: 'Dg 25G - 95A-55'
+    });
 
-    // Agrega el enlace al cuerpo del documento
-    document.body.appendChild(downloadLink);
+    // Crea un objeto Contact con la información del contacto
+    var contact = new Contact({
+      name: 'Adriana del Pilar',
+      givenName: 'Adriana',
+      familyName: 'Forero Ceballos',
+      organization: 'SERVICIOS POSTALES NACIONALES',
+      phoneNumbers: [new ContactField('work', '3105618204', false)],
+      emails: [new ContactField('work', 'adriana.mora@4-72.com.co', false)],
+      addresses: [address],
+      photo: [new ContactField('', 'https://i.postimg.cc/fRGhb5tY/apfc.png', false)]
+    });
 
-    // Simula un clic en el enlace para descargar el archivo de contacto
-    downloadLink.click();
+    // Agrega el contacto a la lista de contactos del usuario
+    addContact(contact);
+  };
 
-    // Elimina el enlace del cuerpo del documento después de un breve período
-    setTimeout(function() {
-      document.body.removeChild(downloadLink);
-      window.URL.revokeObjectURL(blob);
-    }, 1000); // 1000 milisegundos (1 segundo)
-  }
+  // Lee el archivo de contacto como texto
+  reader.readAsText(blob);
 });
 
