@@ -69,7 +69,7 @@ document.getElementById('verMasBtn').addEventListener('click', function () {
 
 
 //   FUNCION AGREGAR CONTACTO
-/*$(".qrc_addtocontact").on("click", function(e){
+$(".qrc_addtocontact").on("click", function(e){
   e.preventDefault();
 
   // Verifica si la página está siendo cargada dentro de un iframe
@@ -95,49 +95,9 @@ document.getElementById('verMasBtn').addEventListener('click', function () {
   // Crea una URL de datos para abrir la interfaz de guardar contacto
   var dataUrl = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
 
+ // Muestra un mensaje antes de la descarga
+ alert("Guarda tu contacto en el dispositivo o en tu cuenta de preferencia. Luego, búscalo en tus contactos.");
+
   // Navega a la URL de datos para abrir la interfaz de guardar contacto
   location.href = dataUrl;
-});
-*/
-
-
-$(".qrc_addtocontact").on("click", function(e){
-  e.preventDefault();
-
-  // Verifica si la página está siendo cargada dentro de un iframe
-  if (window.self !== window.top) {
-      return;
-  }
-
-  // URL de la imagen
-  var imageUrl = "https://i.ibb.co/s9RTXqW/apfc.png"; // Reemplaza con la URL real de la imagen
-
-  // Crea los datos de contacto en formato vCard (VCF)
-  var vCardData = "BEGIN:VCARD\n" +
-                  "VERSION:3.0\n" +
-                  "FN:Adriana del Pilar\n" +  // Nombre
-                  "N:Forero Ceballos;Adriana del Pilar;;;\n" +  // Apellidos;Nombre
-                  "ORG:SERVICIOS POSTALES NACIONALES\n" +  // Empresa
-                  "TEL:3105618204\n" +
-                  "EMAIL:adriana.mora@4-72.com.co\n" +
-                  "ADR: Dg 25G - 95A-55\n" +
-                  "PHOTO;TYPE=JPEG:" + "https://i.ibb.co/s9RTXqW/apfc.png" + "\n" +  // Agrega la URL de la imagen
-                  "END:VCARD";
-
-  // Crea un formulario oculto y agrega un campo de texto con los datos vCard
-  var form = document.createElement("form");
-  form.style.display = "none";
-  form.method = "post";
-  form.action = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
-
-  // Crea un botón de tipo submit y simula el clic para abrir la interfaz de guardar contacto
-  var submitButton = document.createElement("input");
-  submitButton.type = "submit";
-  form.appendChild(submitButton);
-
-  document.body.appendChild(form);
-
-  submitButton.click();
-
-  document.body.removeChild(form);
 });
