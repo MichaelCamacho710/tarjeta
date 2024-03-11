@@ -77,12 +77,15 @@ $(".qrc_addtocontact").on("click", function(e){
       return;
   }
 
+
+
   // Muestra el modal
-  $("#modalContainer").show();
+  
+ /* $("#modalContainer").show();
 // Cierra el modal al hacer clic en el botón "Cerrar"
 $("#modalButton").on("click", function() {
   $("#modalContainer").hide();
-});
+});*/
 
 
   // URL de la imagen  https://i.ibb.co/s9RTXqW/apfc.png

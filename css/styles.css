@@ -332,7 +332,9 @@ a {
 
 
 
-#modalContainer {
+
+/* ESTILOS MODAL  ESTILOS MODAL   ESTILOS MODAL     ESTILOS MODAL  ESTILOS MODAL */
+/* #modalContainer {
   display: none;
   position: fixed;
   top: 0;
@@ -361,7 +363,7 @@ a {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
+} */
 
 
 
@@ -533,7 +535,8 @@ a {
     margin-left: 200px;
   }
 
-  #modalContainer {
+  /* ESTILOS MODAL ESTILOS MODAL ESTILOS MODAL ESTILOS MODALESTILOS MODAL ESTILOS MODAL  ESTILOS MODAL */
+  /* #modalContainer {
     display: none;
     position: fixed;
     top: 0;
@@ -563,9 +566,15 @@ a {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
+  } */
 
 }
+
+
+
+
+
+
 
 /* Media queries para TABLETS */
 @media only screen and (min-width: 600px) and (max-width: 1200px) {
