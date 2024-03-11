@@ -69,7 +69,7 @@ document.getElementById('verMasBtn').addEventListener('click', function () {
 
 
 //   FUNCION AGREGAR CONTACTO
-$(".qrc_addtocontact").on("click", function(e){
+/*$(".qrc_addtocontact").on("click", function(e){
   e.preventDefault();
 
   // Verifica si la página está siendo cargada dentro de un iframe
@@ -89,7 +89,7 @@ $("#modalButton").on("click", function() {
 
 
   // URL de la imagen  https://i.ibb.co/s9RTXqW/apfc.png
-  var imageUrl = "https://i.postimg.cc/fRGhb5tY/apfc.png"; // Reemplaza con la URL real de la imagen
+ /* var imageUrl = "https://i.postimg.cc/fRGhb5tY/apfc.png"; // Reemplaza con la URL real de la imagen
 
   // Crea los datos de contacto en formato vCard (VCF)
   var vCardData = "BEGIN:VCARD\n" +
@@ -122,4 +122,43 @@ $("#modalButton").on("click", function() {
 
   // Abre la aplicación de contactos en Android
   window.open(contactLink.href, "_system");
+});*/
+
+
+
+
+$(".qrc_addtocontact").on("click", function(e){
+  e.preventDefault();
+
+  // Verifica si la página está siendo cargada dentro de un iframe
+  if (window.self !== window.top) {
+      return;
+  }
+
+  // Crea los datos del contacto en formato vCard (VCF)
+  var vCardData = "BEGIN:VCARD\n" +
+                  "VERSION:3.0\n" +
+                  "FN:Adriana del Pilar\n" +
+                  "ORG:SERVICIOS POSTALES NACIONALES\n" +
+                  "TEL:3105618204\n" +
+                  "EMAIL:adriana.mora@4-72.com.co\n" +
+                  "ADR:Dg 25G - 95A-55\n" +
+                  "END:VCARD";
+
+  // Crea una URL de datos para abrir la interfaz de guardar contacto
+  var dataUrl = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
+
+  // Crea un enlace invisible para descargar el archivo de contacto
+  var downloadLink = document.createElement("a");
+  downloadLink.href = dataUrl;
+  downloadLink.download = "contacto.vcf"; // Nombre del archivo de contacto
+
+  // Agrega el enlace al cuerpo del documento
+  document.body.appendChild(downloadLink);
+
+  // Simula el clic en el enlace para iniciar la descarga
+  downloadLink.click();
+
+  // Elimina el enlace del cuerpo del documento
+  document.body.removeChild(downloadLink);
 });
