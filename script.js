@@ -35,9 +35,6 @@ function flipCard(card) {
 // document.getElementById('verMasBtn').addEventListener('click', function () {
 //     document.querySelector('.table-container').classList.toggle('expanded');
 //   });
-  
-
-
 document.getElementById('verMasBtn').addEventListener('click', function () {
     const elements = document.querySelectorAll('.element-container');
     elements.forEach(element => element.classList.toggle('expanded'));
@@ -46,8 +43,7 @@ document.getElementById('verMasBtn').addEventListener('click', function () {
   
 
 // script para desenfocar al poner cursor en datos personales
-
- // Agrega y quita la clase desenfocado en hover
+      // Agrega y quita la clase desenfocado en hover
  document.querySelectorAll('p').forEach(element => {
     element.addEventListener('mouseover', () => {
       document.querySelectorAll('p').forEach(otherElement => {
