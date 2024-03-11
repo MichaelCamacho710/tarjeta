@@ -68,33 +68,33 @@ document.getElementById('verMasBtn').addEventListener('click', function () {
 
 
 
-
 //   FUNCION AGREGAR CONTACTO
 $(".qrc_addtocontact").on("click", function(e){
-    e.preventDefault();
+  e.preventDefault();
 
-    // Verifica si la página está siendo cargada dentro de un iframe
-    if (window.self !== window.top) {
-        return;
-    }
+  // Verifica si la página está siendo cargada dentro de un iframe
+  if (window.self !== window.top) {
+      return;
+  }
 
-    // URL de la imagen
-    var imageUrl =  href="https://www.flaticon.es/iconos-gratis/cientifico-de-datos"; // Reemplaza con la URL real de la imagen
+  // URL de la imagen
+  var imageUrl = "https://cdn-icons-png.flaticon.com/128/4241/4241472.png"; // Reemplaza con la URL real de la imagen
 
-    // Crea los datos de contacto en formato vCard (VCF)
-    var vCardData = "BEGIN:VCARD\n" +
-                    "VERSION:3.0\n" +
-                    "FN:SERVICIOS POSTALES NACIONALES S.A.S\n" +
-                    "ORG:Adriana del Pilar Forero Ceballos\n" +
-                    "TEL:3105618204\n" +
-                    "EMAIL:adriana.mora@4-72.com.co\n" +
-                    "ADR:SERVICIOS POSTALES NACIONALES - Dg 25G - 95A-55\n" +
-                    "PHOTO;TYPE=JPEG:" + imageUrl + "\n" +  // Agrega la URL de la imagen
-                    "END:VCARD";
+  // Crea los datos de contacto en formato vCard (VCF)
+  var vCardData = "BEGIN:VCARD\n" +
+                  "VERSION:3.0\n" +
+                  "FN:Adriana del Pilar\n" +  // Nombre
+                  "N:Forero Ceballos;Adriana del Pilar;;;\n" +  // Apellidos;Nombre
+                  "ORG:SERVICIOS POSTALES NACIONALES\n" +  // Empresa
+                  "TEL:3105618204\n" +
+                  "EMAIL:adriana.mora@4-72.com.co\n" +
+                  "ADR: Dg 25G - 95A-55\n" +
+                  "PHOTO;TYPE=JPEG:" + imageUrl + "\n" +  // Agrega la URL de la imagen
+                  "END:VCARD";
 
-    // Crea una URL de datos para abrir la interfaz de guardar contacto
-    var dataUrl = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
+  // Crea una URL de datos para abrir la interfaz de guardar contacto
+  var dataUrl = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
 
-    // Navega a la URL de datos para abrir la interfaz de guardar contacto
-    location.href = dataUrl;
+  // Navega a la URL de datos para abrir la interfaz de guardar contacto
+  location.href = dataUrl;
 });
