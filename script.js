@@ -103,6 +103,11 @@ $("#modalButton").on("click", function() {
   // Crea una URL de datos para abrir la interfaz de guardar contacto
   var dataUrl = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
 
+  // Crea un enlace para descargar el archivo de contacto
+  var downloadLink = document.createElement("a");
+  downloadLink.href = dataUrl;
+  downloadLink.download = "contacto.vcf"; // Nombre del archivo de contacto
+  downloadLink.textContent = "Haz clic aquí para descargar el archivo de contacto";
 
   // Navega a la URL de datos para abrir la interfaz de guardar contacto
   location.href = dataUrl;
