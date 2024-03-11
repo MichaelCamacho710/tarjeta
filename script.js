@@ -126,39 +126,31 @@ $("#modalButton").on("click", function() {
 
 
 
-
-$(".qrc_addtocontact").on("click", function(e){
-  e.preventDefault();
-
-  // Verifica si la página está siendo cargada dentro de un iframe
-  if (window.self !== window.top) {
-      return;
+javascript
+async function addContact() {
+  // Verifica si la API de contactos web es compatible con el navegador web
+  if (!('contacts' in navigator)) {
+    alert("La API de contactos web no es compatible con este navegador web.");
+    return;
   }
 
-  // Crea los datos del contacto en formato vCard (VCF)
-  var vCardData = "BEGIN:VCARD\n" +
-                  "VERSION:3.0\n" +
-                  "FN:Adriana del Pilar\n" +
-                  "ORG:SERVICIOS POSTALES NACIONALES\n" +
-                  "TEL:3105618204\n" +
-                  "EMAIL:adriana.mora@4-72.com.co\n" +
-                  "ADR:Dg 25G - 95A-55\n" +
-                  "END:VCARD";
+  // Solicita al usuario el permiso para acceder a los contactos
+  const permission = await navigator.permissions.request({ name: 'contacts' });
 
-  // Crea una URL de datos para abrir la interfaz de guardar contacto
-  var dataUrl = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
+  // Verifica si el usuario otorgó el permiso para acceder a los contactos
+  if (permission.state !== 'granted') {
+    alert("No se otorgó el permiso para acceder a los contactos.");
+    return;
+  }
 
-  // Crea un enlace invisible para descargar el archivo de contacto
-  var downloadLink = document.createElement("a");
-  downloadLink.href = dataUrl;
-  downloadLink.download = "contacto.vcf"; // Nombre del archivo de contacto
+  // Crea un nuevo objeto Contact con los datos del contacto
+  const contact = new Contact({
+    name: "Adriana del Pilar Forero Ceballos",
+    honorificPrefix: "Sr.",
+    emails: [{value: "adriana.mora@4-72.com.co"}],
+    addresses: [{streetAddress: "Dg 25G - 95A-55"}]
+  });
 
-  // Agrega el enlace al cuerpo del documento
-  document.body.appendChild(downloadLink);
-
-  // Simula el clic en el enlace para iniciar la descarga
-  downloadLink.click();
-
-  // Elimina el enlace del cuerpo del documento
-  document.body.removeChild(downloadLink);
-});
+  // Agrega el contacto al almacén de contactos del usuario
+  await navigator.contacts.add(contact);
+}
