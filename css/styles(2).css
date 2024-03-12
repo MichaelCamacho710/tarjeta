@@ -76,7 +76,7 @@ body {
   margin: 0 auto;
   transform-style: preserve-3d;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 4px 0 #C4C4C4;
+  box-shadow: 3px 5px 9px 5px #FDC52F;
   border-radius: 25% 23%;
 }
 
@@ -269,7 +269,7 @@ a {
 
 #verMasBtn {
   text-decoration: none;
-  background-color: #FDC52F;
+  background-color: #fff;
   border: none;
   margin-left: 200px;
 }
@@ -295,7 +295,7 @@ a {
 }
 
 .qrc_addtocontact_text {
-  color: #003168;
+  color: #000;
   width: 70px;
   font-size: 15px;
   text-align: center;
@@ -391,9 +391,12 @@ a {
 
   .card-subHeading {
     text-align: center;
+    margin-top: -120px;
+    margin-right: 120px;
   }
 
   .card-heading {
+    margin-top: 50px;
     font-size: 16px;
     text-align: center;
   }
@@ -419,17 +422,26 @@ a {
     border-radius: 25% 10%;
   }
 
-
+  .pAnalista {
+    text-align: center;
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 50px;
+    color: #4d4d4d;
+  } 
+  
   .card-image {
     margin-bottom: 0;
     /* Elimina el margen inferior en dispositivos móviles */
-    width: 250px;
+    width: 200px;
+height: 200px;
     border-radius: 25% 10%;
   }
 
   .card-trigger {
     position: absolute;
-    bottom: 5px;
+    bottom: 50px;
     right: 130px;
     color: #FDC52F;
     font-size: 15px;
@@ -479,7 +491,7 @@ a {
     margin: 0 auto;
     transform-style: preserve-3d;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 4px 0 #FDC52F;
+    box-shadow: 3px 5px 9px 3px #FDC52F;
     border-radius: 25% 23%;
   }
 
