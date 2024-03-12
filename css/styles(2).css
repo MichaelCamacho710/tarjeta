@@ -72,7 +72,7 @@ body {
 .card-container {
   position: relative;
   max-width: 500px;
-  height: 440px;
+  height: 590px;
   margin: 0 auto;
   transform-style: preserve-3d;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -82,6 +82,8 @@ body {
 
 .card--flipped .card-container {
   transform: rotateY(-180deg);
+  height: 425px;
+
 }
 
 .card-front,
@@ -487,14 +489,18 @@ height: 200px;
   .card-container {
     position: relative;
     max-width: 500px;
-    height: 495px;
+    height: 550px;
     margin: 0 auto;
     transform-style: preserve-3d;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 3px 5px 9px 3px #FDC52F;
     border-radius: 25% 23%;
   }
-
+  .card--flipped .card-container {
+    transform: rotateY(-180deg);
+    height: 495px;
+  
+  }
   td,
   h4 {
     bottom: 20px;
