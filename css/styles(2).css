@@ -1,0 +1,752 @@
+/* Resetting default margin and padding */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Estilos alternos tarjeta */
+
+.logo {
+  width: 20%;
+  margin-top: -10px;
+  background-color: transparent;
+  border-radius: 10px;
+  border-radius: 40px 40px;
+}
+
+body {
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+  color: #313131;
+  padding: 5%;
+  background-color: #000;
+  overflow-y: hidden;
+}
+
+.link--styled {
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  border-bottom-color: transparent;
+}
+
+.link--styled:focus,
+.link--styled:hover {
+  color: #003168;
+  border-color: #003168;
+}
+
+.link--styled::after {
+  content: "";
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNyA2LjYiPg0KICA8cGF0aCBmaWxsPSIjMDA1MUE1IiBkPSJNMCwyLjVoMTQuM2wwLjgsMC44TDE0LjMsNEgwVjIuNXogTTE1LjEsMy4zTDE0LjMsNGwtMS41LDEuNWwwLDAuOWMwLDAsMCwwLjEsMC4xLDAuMWwwLjksMGwyLjMtMi4zbDAsMCAgTDE3LDMuM2MwLDAsMCwwLDAsMGMwLDAsMC0wLjEsMC0wLjFsLTAuOS0wLjljMCwwLDAsMCwwLDBMMTMuNywwbC0wLjksMGMwLDAtMC4xLDAtMC4xLDAuMWwwLDAuOWwxLjUsMS41TDE1LjEsMy4zeiIvPg0K");
+  margin-left: 4px;
+  width: 17px;
+  height: 7px;
+}
+
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 0 20px;
+  border-bottom: 1px solid transparent;
+  border-radius: 25% 10%;
+}
+
+.card {
+  perspective: 1000px;
+  width: 500px;
+  height: 480px;
+  margin: -60px auto;
+}
+
+.datosPersonales {
+  text-align: center;
+  margin-top: -50px;
+  color: #4d4d4d;
+  text-decoration: underline;
+}
+
+.card-container {
+  position: relative;
+  max-width: 500px;
+  height: 440px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px 0 #C4C4C4;
+  border-radius: 25% 23%;
+}
+
+.card--flipped .card-container {
+  transform: rotateY(-180deg);
+}
+
+.card-front,
+.card-back {
+  backface-visibility: hidden;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 25% 10%;
+}
+
+.card-front {
+  z-index: 2;
+}
+
+.content-container {
+  display: flex;
+  align-items: center;
+  /* Centra verticalmente los elementos en el contenedor */
+}
+
+.card-image {
+  width: 400px;
+  height: 330px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 25% 10%;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.pAnalista {
+  text-align: center;
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 18px;
+  color: #4d4d4d;
+}
+
+.card-textWrapper {
+  min-height: 180px;
+  padding: 20px;
+  transition: all 0.2s ease-in-out;
+
+  .card--flipped & {
+    min-height: 140px;
+  }
+}
+
+.card-subHeading {
+  color: #000;
+  font-weight: bold;
+  font-weight: 800;
+  justify-content: center;
+}
+
+.card-heading {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+  color: #1A1A1A;
+  justify-content: center;
+}
+
+.card-trigger {
+  position: absolute;
+  bottom: 20px;
+  right: 50px;
+  color: #FDC52F;
+  font-size: 15px;
+  font-weight: bold;
+  transition: 1s;
+
+  .card--flipped & {
+    transition: all 0.2s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+.card-trigger:hover {
+  color: black;
+  font-weight: bold;
+  transform: translateX(5px);
+  text-decoration: underline;
+}
+
+.card-back {
+  transform: rotateY(-180deg);
+  height: 300px;
+  padding: 100px 50px 20px;
+  border-radius: 25% 10%;
+  scrollbar-width: none;
+}
+
+.card-close {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transition: all 0.2s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+  transition: 0.9s;
+
+  .card--flipped & {
+    visibility: visible;
+    opacity: 1;
+    z-index: 5;
+    top: 20px;
+  }
+
+  &::before,
+  &::after {
+    transition: all 0.2s ease-in-out;
+    position: absolute;
+    content: '';
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #FDC52F;
+  }
+
+  &::before {
+    top: calc(50% - 1.5px);
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    bottom: calc(50% - 1.5px);
+    transform: rotate(-45deg);
+  }
+}
+
+.card-close:hover {
+  transform: rotate(360deg);
+}
+
+td,
+h4 {
+  color: black;
+}
+
+td,
+p,
+a {
+  color: #0035A0;
+  text-decoration: none;
+  transition: opacity 0.9s ease-in-out;
+}
+
+.enfocado {
+  opacity: 1 !important;
+  z-index: 5;
+}
+
+.desenfocado {
+  opacity: 0.1;
+  z-index: 1;
+}
+
+
+
+
+
+
+/* TRANSICION     TRANSICION     TRANSICION */
+/* Añade estas reglas de estilo para la transición de cada elemento */
+.element-container {
+  transition: transform 0.9s ease-in-out;
+  transform: translateY(0);
+  /* Ajusta la posición inicial */
+}
+
+.element-container.expanded {
+  transform: translateY(14%);
+  /* Ajusta la posición después de hacer clic en "Ver más" */
+}
+
+#verMasBtn {
+  text-decoration: none;
+  background-color: #FDC52F;
+  border: none;
+  margin-left: 200px;
+}
+
+
+/* ESTILOS BOTON "AÑADIR A CONTACTOS" */
+
+.qrc_addtocontact {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 450px;
+  right: 15px;
+  z-index: 9;
+  background:
+    /*var(--qrc-primary)*/
+    #FDC52F;
+  padding: 8px 8px 8px 12px;
+  border-radius: 52px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+  border: solid 2px #ffffff20;
+  transition: 0.7s;
+}
+
+.qrc_addtocontact_text {
+  color: #003168;
+  width: 70px;
+  font-size: 15px;
+  text-align: center;
+  transition: 0.7s;
+}
+
+.qrc_addtocontact_circle {
+  background-color: #FDC52F;
+  color: var(--qrc-primary);
+  width: 30px;
+  height: 30px;
+  border-radius: 42px;
+  margin-left: 15px;
+  font-size: 30px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  transition: 0.7s;
+  background-color: #000;
+
+}
+
+.qrc_addtocontact:hover {
+  transform: translateX(10px);
+  text-decoration: underline;
+}
+
+.qrc_addtocontact_text:hover {
+  transform: translatey(-5px);
+}
+
+.qrc_addtocontact_circle:hover {
+  transform: rotate(360deg);
+}
+
+
+
+
+
+/* ESTILOS MODAL  ESTILOS MODAL   ESTILOS MODAL     ESTILOS MODAL  ESTILOS MODAL */
+/* #modalContainer {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#myModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 80%;
+  text-align: center;
+}
+
+#modalButton {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+} */
+
+
+
+
+
+
+
+
+/* RESPONSIVE -------  RESPONSIVE --------  RESPONSIVE ---------------*/
+
+/* Media queries para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+
+  .logo,
+  .container,
+  .card,
+  .card-container,
+  .card-front,
+  .card-back {
+    border-radius: 0;
+    /* Elimina la border-radius en dispositivos móviles */
+  }
+
+  .card-subHeading {
+    text-align: center;
+  }
+
+  .card-heading {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .logo {
+    width: 50%;
+    height: 50%;
+    align-items: center;
+  }
+
+  .card {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .card-front {
+    width: auto;
+  }
+
+  .content-container {
+    align-items: flex-start;
+    /* Ajusta la alineación a la izquierda en dispositivos móviles */
+    border-radius: 25% 10%;
+  }
+
+
+  .card-image {
+    margin-bottom: 0;
+    /* Elimina el margen inferior en dispositivos móviles */
+    width: 250px;
+    border-radius: 25% 10%;
+  }
+
+  .card-trigger {
+    position: absolute;
+    bottom: 5px;
+    right: 130px;
+    color: #FDC52F;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 1s;
+
+    .card--flipped & {
+      transition: all 0.2s ease-in-out;
+      visibility: hidden;
+      opacity: 0;
+      z-index: -1;
+    }
+  }
+
+  .card-trigger:hover {
+    color: black;
+    font-weight: bold;
+    transform: translateX(5px);
+    text-decoration: underline;
+  }
+
+  .card-front,
+  .card-back {
+    backface-visibility: hidden;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 25% 10%;
+  }
+
+  .card-back {
+    margin-top: 10px;
+    transform: rotateY(-180deg);
+    height: 300px;
+    padding: 90px 20px 90px;
+    border-radius: 25% 10%;
+    scrollbar-width: none;
+  }
+
+  .card-front {
+    z-index: 2;
+  }
+
+  .card-container {
+    position: relative;
+    max-width: 500px;
+    height: 440px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px 0 #FDC52F;
+    border-radius: 25% 23%;
+  }
+
+  td,
+  h4 {
+    bottom: 20px;
+    color: black;
+  }
+
+  td,
+  p,
+  a {
+    color: #0035A0;
+  }
+
+  .qrc_addtocontact {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 450px;
+    right: 15px;
+    z-index: 9;
+    background: /*var(--qrc-primary)*/#FDC52F;
+    padding: 8px 8px 8px 12px;
+    border-radius: 52px;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    border: solid 2px #ffffff20;
+  }
+
+  .qrc_addtocontact_text {
+    color: #003168;
+    width: 50px;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .qrc_addtocontact_circle {
+    background-color: #000;
+    color: var(--qrc-primary);
+    width: 30px;
+    height: 30px;
+    border-radius: 42px;
+    margin-left: 15px;
+    font-size: 30px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  #verMasBtn {
+    text-decoration: none;
+    background-color: #fff;
+    border: none;
+    margin-left: 200px;
+  }
+
+  /* ESTILOS MODAL ESTILOS MODAL ESTILOS MODAL ESTILOS MODALESTILOS MODAL ESTILOS MODAL  ESTILOS MODAL */
+  /* #modalContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  #myModal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    text-align: center;
+  }
+  
+  #modalButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  } */
+
+}
+
+
+
+
+
+
+
+/* Media queries para TABLETS */
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+
+  .logo,
+  .container,
+  .card,
+  .card-container,
+  .card-front,
+  .card-back {
+    border-radius: 0;
+    /* Elimina la border-radius en dispositivos móviles */
+  }
+
+  body {
+    overflow-y: scroll;
+  }
+
+  .card-subHeading {
+    text-align: center;
+  }
+
+  .card-heading {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .logo {
+    margin-top: 20px;
+    width: 50%;
+    height: 50%;
+    border-radius: 20px 60px;
+  }
+
+  .card {
+    margin-top: 20px;
+    width: auto;
+  }
+
+  .content-container {
+    align-items: flex-start;
+    /* Ajusta la alineación a la izquierda en dispositivos móviles */
+    border-radius: 25% 10%;
+  }
+
+  .card-textWrapper {
+    padding: 20px 0;
+    /* Ajusta el relleno superior e inferior en dispositivos móviles */
+  }
+
+  .card-image {
+    margin-bottom: 0;
+    /* Elimina el margen inferior en dispositivos móviles */
+    width: 350px;
+    border-radius: 25% 10%;
+  }
+
+  .card-trigger {
+    position: absolute;
+    bottom: 20px;
+    right: 80px;
+    color: #0051A5;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 1s;
+
+    .card--flipped & {
+      transition: all 0.2s ease-in-out;
+      visibility: hidden;
+      opacity: 0;
+      z-index: -1;
+    }
+  }
+
+  .card-trigger:hover {
+    color: black;
+    font-weight: bold;
+    transform: translateX(5px);
+    text-decoration: underline;
+  }
+
+  .card-front,
+  .card-back {
+    backface-visibility: hidden;
+    position: absolute;
+    background-color: #FDC52F;
+    border-radius: 25% 10%;
+  }
+
+  .card-back {
+    margin-top: 40px;
+    transform: rotateY(-180deg);
+    height: 250px;
+    padding: 100px 50px 100px;
+    border-radius: 25% 10%;
+    scrollbar-width: none;
+  }
+
+  .card-front {
+    z-index: 2;
+    width: 100%;
+  }
+
+  .card-container {
+    position: relative;
+    max-width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px 0 #C4C4C4;
+    border-radius: 25% 23%;
+  }
+
+  .pAnalista {
+    margin-left: 50px;
+  }
+
+  td,
+  h4 {
+    bottom: 20px;
+    color: black;
+  }
+
+  td,
+  p,
+  a {
+    color: #0035A0;
+  }
+
+  .qrc_addtocontact {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 450px;
+    right: 15px;
+    z-index: 9;
+    background:
+      /*var(--qrc-primary)*/
+      #F30437;
+    padding: 8px 8px 8px 12px;
+    border-radius: 52px;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    border: solid 2px #ffffff20;
+  }
+
+  .qrc_addtocontact_text {
+    color: #fff;
+    width: 70px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .qrc_addtocontact_circle {
+    background-color: #fff;
+    color: var(--qrc-primary);
+    width: 30px;
+    height: 30px;
+    border-radius: 42px;
+    margin-left: 15px;
+    font-size: 30px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  #verMasBtn {
+    text-decoration: none;
+    background-color: #FDC52F;
+    border: none;
+    margin-left: 200px;
+  }
+
+}
