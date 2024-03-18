@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,72 +7,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tarjeta de Presentación</title>
-  <link rel="stylesheet" href="css/styles(2).css">
+  <link rel="stylesheet" href="css/styles.css">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <link rel="shortcut icon" href="img/icon.png" type="image/png" />
-
 </head>
 
 <body>
-
   <img src="img/logo.png" alt="Profile Picture" class="logo">
   <div class="contianer">
     <div class="card">
       <div class="card-container">
         <div class="card-front">
           <div class="content-container">
+            <!-- Aquí la imagen y el cargo -->
             <div class="card-image" style="background-image: url('img/funcionarios/apfc.png');"></div>
-            <p class="pAnalista">A<br>N<br>A<br>L<br>I<br>S<br>T<br>A<br><br>N<br>I<br>V<br>E<br>L<br><br> II</p>
+            <p class="pAnalista"><?php echo $Cargo; ?></p>
           </div>
           <div class="card-textWrapper">
-            <h2 class="card-subHeading">Ing. Adriana del Pilar Forero Ceballos </h2>
-            <h3 class="card-heading">Ocupa el cargo de Analista Nivel II en la dirección Nacional de Informática y
-              Tecnología, desempeñando funciones avanzadas en el desarrollo y mantenimiento de soluciones informáticas.
-            </h3>
+            <!-- Aquí el nombre, cargo, área y función -->
+            <h2 class="card-subHeading">Ing. <?php echo $Nombre; ?></h2>
+            <h3 class="card-heading">Ocupa el cargo de <?php echo $Cargo; ?> en el área <?php echo $Area; ?>, desempeñando funciones avanzadas en <?php echo $Funcion; ?>.</h3>
             <button id="verMasBtn"><a href="#" class="card-trigger link--styled">Ver más</a></button>
           </div>
         </div>
+        
         <div class="card-back">
           <h2 class="datosPersonales">Datos Personales</h2>
-
           <div class="card-close"></div>
-
           <div class="table-container">
             <table width="100%" class="info-table">
               <tr>
-                <a rel="nofollow noopener noreferrer" href="#" class="qrc_addtocontact">
-                  <div class="qrc_addtocontact_text">Agregar Contacto</div>
-                  <div class="qrc_addtocontact_circle">
-                    <span class="icon-add_1" src="img/icon.png"><img src="img/icon.png" alt=""> </span>
-                  </div>
-                </a>
-
-
-
-
-
-
+                <!-- Aquí la información de contacto -->
                 <td class="element-container">
                   <h4><b>Email:</b></h4>
-                  <p><a href="mailto:adriana.forero@4-72.com.co">adriana.forero@4-72.com.co</a></p>
-
+                  <p><a href="mailto:<?php echo $Email; ?>"><?php echo $Email; ?></a></p>
                   <h4><b>Celular:</b></h4>
-                  <p><a href="tel:(+57)3105618204"><i class="fas fa-phone"></i>&nbsp;(+57)3105618204</a></p>
-
-
+                  <p><a href="tel:<?php echo $Celular; ?>"><i class="fas fa-phone"></i>&nbsp;<?php echo $Celular; ?></a></p>
                   <h4><b>Teléfono fijo:</b></h4>
-                  <p><a href="tel:6014722005"><i class="fas fa-phone"></i>&nbsp;601 4722005 Ext. 1052</a></p>
+                  <p><a href="tel:<?php echo $TelefonoFijo; ?>"><i class="fas fa-phone"></i>&nbsp;<?php echo $TelefonoFijo; ?></a></p>
                 </td>
-
                 <td class="element-container">
                   <h4><b>Página Web:</b></h4>
-                  <p><a href="https://www.4-72.com.co">www.4-72.com.co</a></p>
-
+                  <p><a href="<?php echo $PaginaWeb; ?>"><?php echo $PaginaWeb; ?></a></p>
                   <h4><b>Dirección:</b></h4>
-                  <p>Diagonal 25G N 95A - 55. Bogotá, Colombia</p>
-
+                  <p><?php echo $Direccion; ?></p>
                   <h4><b>Código Postal:</b></h4>
-                  <p>110911</p>
+                  <p><?php echo $CodigoPostal; ?></p>
                 </td>
               </tr>
             </table>
@@ -80,7 +62,7 @@
     </div>
   </div>
 
-<!-- MODAL INFORMACION AÑADIR A CONTACTOS -->
+  <!-- MODAL INFORMACION AÑADIR A CONTACTOS -->
   <!-- <div id="modalContainer">
     <div id="myModal">
       <p>Se descargará un archivo con el contacto solicitado, luego lo podrás guardar en el dispositivo o en tu cuenta de preferencia. Posterior a esto, búscalo en tus contactos.</p>
@@ -88,8 +70,10 @@
     </div>
   </div> -->
 
-
   <script src="script.js"></script>
+
+  
 </body>
 
 </html>
+<?php include 'conexion.php'; ?>

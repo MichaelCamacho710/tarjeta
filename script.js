@@ -73,7 +73,6 @@ $("#modalButton").on("click", function() {
 
 //   FUNCION AGREGAR CONTACTO
 
-
 $(".qrc_addtocontact").on("click", function(e) {
   e.preventDefault();
 
@@ -82,38 +81,50 @@ $(".qrc_addtocontact").on("click", function(e) {
     return;
   }
 
-  // Crea los datos de contacto en formato vCard (VCF)
-  var vCardData = "BEGIN:VCARD\n" +
-                  "VERSION:3.0\n" +
-                  "FN:Adriana del Pilar\n" +  // Nombre
-                  "N:Forero Ceballos;Adriana del Pilar;;;\n" +  // Apellidos;Nombre
-                  "ORG:SERVICIOS POSTALES NACIONALES\n" +  // Empresa
-                  "TEL:3105618204\n" +
-                  "EMAIL:adriana.mora@4-72.com.co\n" +
-                  "ADR: Dg 25G - 95A-55\n" +
-                  "PHOTO;TYPE=JPEG:https://i.postimg.cc/fRGhb5tY/apfc.png\n" +  // Agrega la URL de la imagen
-                  "END:VCARD";
+  // Realiza una solicitud AJAX para obtener los datos del contacto desde el servidor
+  $.ajax({
+    url: "conexion.php", // Ruta al script PHP que obtiene los datos
+    type: "GET",
+    success: function(data) {
+      // Los datos se han recibido correctamente
+      var contacto = JSON.parse(data);
 
-  // Crea un Blob con los datos vCard
-  var blob = new Blob([vCardData], { type: "text/vcard" });
+      // Crea los datos de contacto en formato vCard (VCF)
+      var vCardData = "BEGIN:VCARD\n" +
+                      "VERSION:3.0\n" +
+                      "FN:" + contacto.nombre + "\n" +
+                      "N:" + contacto.nombre + ";;;\n" +
+                      "ORG:" + contacto.organizacion + "\n" +
+                      "TEL:" + contacto.celular + "\n" +
+                      "EMAIL:" + contacto.email + "\n" +
+                      "ADR:" + contacto.direccion + "\n" +
+                      "END:VCARD";
 
-  // Crea un enlace para descargar el archivo de contacto
-  var downloadLink = document.createElement("a");
-  downloadLink.href = window.URL.createObjectURL(blob);
-  downloadLink.download = "contacto.vcf";
-  downloadLink.textContent = "Haz clic aquí para descargar el archivo de contacto";
+      // Crea un Blob con los datos vCard
+      var blob = new Blob([vCardData], { type: "text/vcard" });
 
-  // Agrega el enlace al cuerpo del documento
-  document.body.appendChild(downloadLink);
+      // Crea un enlace para descargar el archivo de contacto
+      var downloadLink = document.createElement("a");
+      downloadLink.href = window.URL.createObjectURL(blob);
+      downloadLink.download = "contacto.vcf";
+      downloadLink.textContent = "Haz clic aquí para descargar el archivo de contacto";
 
-  // Simula un clic en el enlace para descargar el archivo de contacto
-  downloadLink.click();
+      // Agrega el enlace al cuerpo del documento
+      document.body.appendChild(downloadLink);
 
-  // Elimina el enlace del cuerpo del documento después de un breve período
-  setTimeout(function() {
-    document.body.removeChild(downloadLink);
-    window.URL.revokeObjectURL(blob);
-  }, 1000); // 1000 milisegundos (1 segundo)
+      // Simula un clic en el enlace para descargar el archivo de contacto
+      downloadLink.click();
+
+      // Elimina el enlace del cuerpo del documento después de un breve período
+      setTimeout(function() {
+        document.body.removeChild(downloadLink);
+        window.URL.revokeObjectURL(blob);
+      }, 1000); // 1000 milisegundos (1 segundo)
+    },
+    error: function() {
+      // Error al obtener los datos del contacto
+      console.log("Error al obtener los datos del contacto.");
+    }
+  });
 });
-
 

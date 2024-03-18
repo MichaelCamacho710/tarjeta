@@ -116,6 +116,9 @@ body {
 }
 
 .pAnalista {
+  writing-mode: vertical-rl; /* Cambia la orientación del texto a vertical de derecha a izquierda */
+  text-orientation: upright; /* Orienta el texto verticalmente */
+  letter-spacing: -0.30em; /* Ajusta el espaciado entre las letras */
   text-align: center;
   white-space: nowrap;
   font-size: 18px;
@@ -398,7 +401,7 @@ a {
   }
 
   .card-heading {
-    margin-top: 50px;
+    margin-top: 120px;
     font-size: 16px;
     text-align: center;
   }
